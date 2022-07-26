@@ -3,7 +3,7 @@ let todaysDate = moment().format("dddd") + ", " + moment().format("MMMM Do YYYY"
 $("#currentDay").text(todaysDate);
 //Displays the current Date
 
-let theHour = moment().hour();
+let theHour = moment().format("ha");
 //The current hour
 
 const nineAM = $("#9am");
