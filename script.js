@@ -6,28 +6,25 @@ $("#currentDay").text(todaysDate);
 let theHour = moment().format("ha");
 //The current hour
 
-const nineAM = $("#9am");
-const tenAM = $("#10am");
-const elevenAM = $("#11am");
-const twelvePM = $("#12pm");
-const onePM = $("#1pm");
-const twoPM = $("#2pm");
-const threePM = $("#3pm");
-const fourPM = $("#4pm");
-const fivePM = $("#5pm");
-//The textarea ID
+const nineAM = $("#9hour");
+const tenAM = $("#10hour");
+const elevenAM = $("#11hour");
+const twelvePM = $("#12hour");
+const onePM = $("#13hour");
+const twoPM = $("#14hour");
+const threePM = $("#15hour");
+const fourPM = $("#16hour");
+const fivePM = $("#17hour");
 
-//What am i doing wrong here why is this not changing the color of the timeblock according to the time?
+//styling the color based on the time being in the past present or future.
 function colorStyle() {
   $("textarea").each(function () {
     var time = parseInt($(this).attr("id"));
-    console.log(time);
-    theHour = parseInt(theHour);
-
+    theHour = moment().hour();
     if (theHour > time) {
-      $(this).addClass("future");
-    } else if (theHour < time) {
       $(this).addClass("past");
+    } else if (theHour < time) {
+      $(this).addClass("future");
     } else {
       $(this).addClass("present");
     }
@@ -36,49 +33,20 @@ function colorStyle() {
 
 colorStyle();
 
-// var todaysDate = moment().format("dddd") + ", " + moment().format("MMMM Do YYYY");
-
-// $("#currentDay").text(todaysDate);
-// //Displays the current Date
-
-// var theHour = moment().format("ha");
-// //The current hour
-
-// const nineAM = $("#9am");
-// const tenAM = $("#10am");
-// const elevenAM = $("#11am");
-// const twelvePM = $("#12pm");
-// const onePM = $("#1pm");
-// const twoPM = $("#2pm");
-// const threePM = $("#3pm");
-// const fourPM = $("#4pm");
-// const fivePM = $("#5pm");
-// //The textarea ID
-
-// //What am i doing wrong here why is this not changing the color of the timeblock according to the time?
-// function colorStyle() {
-//   $(".timeblock row").each(function () {
-//     var time = parseInt($(this).attr("id"));
-//     theHour = parseInt(theHour);
-//     console.log(theHour);
-//     if (theHour > time) {
-//       $(this).addClass("past");
-//     } else if (theHour === time) {
-//       $(this).addClass("present");
-//     } else {
-//       $(this).addClass("future");
-//     }
-//   });
-// }
-
-// colorStyle();
-
+//Saving to Local Storage
+$(".saveBtn").on("click", function () {
+  var text = $(this).siblings("textarea").val();
+  var key = $(this).siblings("textarea").attr("id");
+  localStorage.setItem(key, text);
+});
 $(document).ready(function () {
-  $(".saveBtn").on("click", function () {
-    var text = $(this).siblings("textarea").val();
-    var key = $(this).siblings("textarea").attr("id");
-    console.log(text);
-    console.log(key);
-    localStorage.setItem(key, JSON.stringify(text));
-  });
+  $(nineAM).val(localStorage.getItem("9hour"));
+  $(tenAM).val(localStorage.getItem("10hour"));
+  $(elevenAM).val(localStorage.getItem("11hour"));
+  $(twelvePM).val(localStorage.getItem("12hour"));
+  $(onePM).val(localStorage.getItem("13hour"));
+  $(twoPM).val(localStorage.getItem("14hour"));
+  $(threePM).val(localStorage.getItem("15hour"));
+  $(fourPM).val(localStorage.getItem("16hour"));
+  $(fivePM).val(localStorage.getItem("17hour"));
 });
