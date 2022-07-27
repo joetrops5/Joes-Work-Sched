@@ -1,6 +1,6 @@
-https://github.com/joetrops5/Joes-Work-Sched
+Github Link= https://github.com/joetrops5/Joes-Work-Sched
 
-
+Deployed URL = https://joetrops5.github.io/Joes-Work-Sched/
 
 # 05 Third-Party APIs: Work Day Scheduler
 
